@@ -1,4 +1,11 @@
 <resources>
     <string name="app_name">HouseWork4</string>
     <string name="monday_button">Monday</string>
+    <string name="tuesday_button">Tuesday</string>
+    <string name="wednesday_button">Wednesday</string>
+    <string name="thursday_button">Thursday</string>
+    <string name="friday_button">Friday</string>
+    <string name="saturday_button">Saturday</string>
+    <string name="sunday_button">Sunday</string>
+    <string name="add_task_button">Add Task</string>
 </resources>

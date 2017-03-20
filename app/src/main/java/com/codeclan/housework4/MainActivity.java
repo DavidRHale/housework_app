@@ -39,14 +39,47 @@ public class MainActivity extends AppCompatActivity {
         if (allDaysCursor.getCount() != 7) {
             addAllDays();
         }
-
-        addTaskToDB("HI DAVE!", "HOPE THIS WORKS!!");
-        addDayTaskToDB(1,2);
-
     }
 
     public void onMondayButtonClicked(View button) {
         Intent intent = new Intent(this, DayTasksActivity.class);
+        intent.putExtra("mondayID", 1);
+        startActivity(intent);
+    }
+
+    public void onTuesdayButtonClicked(View button) {
+        Intent intent = new Intent(this, DayTasksActivity.class);
+        intent.putExtra("mondayID", 2);
+        startActivity(intent);
+    }
+
+    public void onWednesdayButtonClicked(View button) {
+        Intent intent = new Intent(this, DayTasksActivity.class);
+        intent.putExtra("mondayID", 3);
+        startActivity(intent);
+    }
+
+    public void onThursdayButtonClicked(View button) {
+        Intent intent = new Intent(this, DayTasksActivity.class);
+        intent.putExtra("mondayID", 4);
+        startActivity(intent);
+    }
+
+    public void onFridayButtonClicked(View button) {
+        Intent intent = new Intent(this, DayTasksActivity.class);
+        intent.putExtra("mondayID", 5);
+        startActivity(intent);
+    }
+
+    public void onSaturdayButtonClicked(View button) {
+        Intent intent = new Intent(this, DayTasksActivity.class);
+        intent.putExtra("mondayID", 6);
+        startActivity(intent);
+    }
+
+    public void onSundayButtonClicked(View button) {
+        Intent intent = new Intent(this, DayTasksActivity.class);
+        intent.putExtra("mondayID", 7);
         startActivity(intent);
     }
 

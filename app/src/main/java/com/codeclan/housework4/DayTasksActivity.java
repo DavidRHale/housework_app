@@ -31,15 +31,15 @@ public class DayTasksActivity extends AppCompatActivity {
         setContentView(R.layout.activity_day_tasks);
 
         Intent intent = getIntent();
+        int dayID = intent.getIntExtra("dayID", 8);
 
         TaskListDBHelper dbHelper = new TaskListDBHelper(this);
         mDb = dbHelper.getWritableDatabase();
 
-        Cursor allDaysCursor = getAllDays();
-        days = generateArrayListOfDays(getAllDays());
+//        Cursor allDaysCursor = getAllDays();
+//        days = generateArrayListOfDays(getAllDays());
 
-        Cursor taskListCursor = getTaskListForDay(1);
-//        Cursor taskListCursor = getAllTasks();
+        Cursor taskListCursor = getTaskListForDay(dayID);
         tasks = generateArrayListOfTasks(taskListCursor);
 
         DayTasksAdapter adapter = new DayTasksAdapter(this, tasks);
