@@ -1,5 +1,10 @@
 package com.codeclan.housework4;
 
+import android.content.ContentValues;
+import android.database.sqlite.SQLiteDatabase;
+
+import com.codeclan.housework4.data.TaskListContract;
+
 import java.util.ArrayList;
 
 /**
@@ -52,5 +57,14 @@ public class Task {
 
     public void setIsCompleted(boolean isCompleted) {
         isCompleted = isCompleted;
+    }
+
+    public long addToDB(SQLiteDatabase db) {
+        ContentValues cv = new ContentValues();
+        cv.put(TaskListContract.TasksEntry.COLUMN_NAME, this.name);
+        cv.put(TaskListContract.TasksEntry.COLUMN_DESCRIPTION, this.description);
+        cv.put(TaskListContract.TasksEntry.COLUMN_IS_COMLETED, this.isCompleted);
+
+        return db.insert(TaskListContract.TasksEntry.TABLE_NAME, null, cv);
     }
 }

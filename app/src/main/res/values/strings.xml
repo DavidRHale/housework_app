@@ -8,4 +8,7 @@
     <string name="saturday_button">Saturday</string>
     <string name="sunday_button">Sunday</string>
     <string name="add_task_button">Add Task</string>
+    <string name="enter_name">Enter Task Name</string>
+    <string name="enter_description">Enter Task Description</string>
+    <string name="submit_task_button">Add New Task</string>
 </resources>

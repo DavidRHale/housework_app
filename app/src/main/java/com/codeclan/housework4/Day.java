@@ -1,5 +1,10 @@
 package com.codeclan.housework4;
 
+import android.content.ContentValues;
+import android.database.sqlite.SQLiteDatabase;
+
+import com.codeclan.housework4.data.TaskListContract;
+
 import java.util.ArrayList;
 
 /**
@@ -30,5 +35,12 @@ public class Day {
 
     public long getId() {
         return id;
+    }
+
+    public long addToDB(SQLiteDatabase db) {
+        ContentValues cv = new ContentValues();
+        cv.put(TaskListContract.TasksEntry.COLUMN_NAME, this.dayName);
+
+        return db.insert(TaskListContract.TasksEntry.TABLE_NAME, null, cv);
     }
 }
