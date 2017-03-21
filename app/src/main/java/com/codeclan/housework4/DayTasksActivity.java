@@ -126,6 +126,15 @@ public class DayTasksActivity extends AppCompatActivity {
         textView.setText(isCompletedString);
     }
 
+    public void onTaskItemClicked(View view) {
+        TextView textView = (TextView) view;
+        Task task = (Task) textView.getTag();
+
+        Intent intent = new Intent(this, TaskViewActivity.class);
+        intent.putExtra("taskId", task.getId());
+        startActivity(intent);
+    }
+
     private void updateTaskOnDB(long id, boolean isCompleted) {
         String strFilter = "_id=" + id;
         ContentValues cv = new ContentValues();
