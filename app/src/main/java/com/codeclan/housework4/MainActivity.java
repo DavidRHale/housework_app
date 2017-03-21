@@ -1,11 +1,18 @@
 package com.codeclan.housework4;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import java.util.Calendar;
+
+import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import com.codeclan.housework4.data.*;
@@ -21,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     private Button fridayButton;
     private Button saturdayButton;
     private Button sundayButton;
+    private Button todayButton;
     private Button addTaskButton;
 
     @Override
@@ -35,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         fridayButton = (Button) findViewById(R.id.friday_button);
         saturdayButton = (Button) findViewById(R.id.saturday_button);
         sundayButton = (Button) findViewById(R.id.sunday_button);
+        todayButton = (Button) findViewById(R.id.today_button);
         addTaskButton = (Button) findViewById(R.id.add_task_button);
 
         TaskListDBHelper dbHelper = new TaskListDBHelper(this);
@@ -44,48 +53,43 @@ public class MainActivity extends AppCompatActivity {
 
         if (allDaysCursor.getCount() != 7) {
             addAllDays();
+            allDaysCursor = getAllDays();
         }
+
+        ResetTaskService.setServiceAlarm(this);
     }
 
     public void onMondayButtonClicked(View button) {
-        Intent intent = new Intent(this, DayTasksActivity.class);
-        intent.putExtra("dayID", 1);
-        startActivity(intent);
+        onButtonClicked(button, 1);
     }
 
     public void onTuesdayButtonClicked(View button) {
-        Intent intent = new Intent(this, DayTasksActivity.class);
-        intent.putExtra("dayID", 2);
-        startActivity(intent);
+        onButtonClicked(button, 2);
     }
 
     public void onWednesdayButtonClicked(View button) {
-        Intent intent = new Intent(this, DayTasksActivity.class);
-        intent.putExtra("dayID", 3);
-        startActivity(intent);
+        onButtonClicked(button, 3);
     }
 
     public void onThursdayButtonClicked(View button) {
-        Intent intent = new Intent(this, DayTasksActivity.class);
-        intent.putExtra("dayID", 4);
-        startActivity(intent);
+        onButtonClicked(button, 4);
     }
 
     public void onFridayButtonClicked(View button) {
-        Intent intent = new Intent(this, DayTasksActivity.class);
-        intent.putExtra("dayID", 5);
-        startActivity(intent);
+        onButtonClicked(button, 5);
     }
 
     public void onSaturdayButtonClicked(View button) {
-        Intent intent = new Intent(this, DayTasksActivity.class);
-        intent.putExtra("dayID", 6);
-        startActivity(intent);
+        onButtonClicked(button, 6);
     }
 
     public void onSundayButtonClicked(View button) {
+        onButtonClicked(button, 7);
+    }
+
+    public void onButtonClicked(View button, int dayId) {
         Intent intent = new Intent(this, DayTasksActivity.class);
-        intent.putExtra("dayID", 7);
+        intent.putExtra("dayID", dayId);
         startActivity(intent);
     }
 
@@ -139,4 +143,58 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, AddTaskActivity.class);
         startActivity(intent);
     }
+
+    public void onTodayButtonClicked(View button) {
+        Calendar calendar = Calendar.getInstance();
+        int day = calendar.get(Calendar.DAY_OF_WEEK);
+
+        switch (day) {
+            case Calendar.MONDAY:
+                onButtonClicked(mondayButton, 1);
+                break;
+            case Calendar.TUESDAY:
+                onButtonClicked(tuesdayButton, 2);
+                break;
+            case Calendar.WEDNESDAY:
+                onButtonClicked(wednesdayButton, 3);
+                break;
+            case Calendar.THURSDAY:
+                onButtonClicked(thursdayButton, 4);
+                break;
+            case Calendar.FRIDAY:
+                onButtonClicked(fridayButton, 5);
+                break;
+            case Calendar.SATURDAY:
+                onButtonClicked(saturdayButton, 6);
+                break;
+            case Calendar.SUNDAY:
+                onButtonClicked(sundayButton, 7);
+                break;
+        }
+    }
+
+//    public void setAlarm() {
+//        String alarm = Context.ALARM_SERVICE;
+//        AlarmManager alarmManager = (AlarmManager) getSystemService(alarm);
+//
+//        Intent intent = new Intent( "RESET_TASKS" );
+//        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, intent, 0);
+//
+//        int type = AlarmManager.ELAPSED_REALTIME_WAKEUP;
+//        long interval = AlarmManager.INTERVAL_DAY;
+//        long triggerTime = System.currentTimeMillis() + millisecondsToMidnight() + 500000;
+//
+//        alarmManager.setRepeating(type, triggerTime, interval, pendingIntent);
+//    }
+//
+//    public long millisecondsToMidnight() {
+//        Calendar calendar = Calendar.getInstance();
+//        calendar.add(Calendar.DAY_OF_MONTH, 1);
+//        calendar.set(Calendar.HOUR_OF_DAY, 0);
+//        calendar.set(Calendar.MINUTE, 0);
+//        calendar.set(Calendar.SECOND, 0);
+//        calendar.set(Calendar.MILLISECOND, 0);
+//        long millisecondsToMidnight = (calendar.getTimeInMillis()-System.currentTimeMillis());
+//        return millisecondsToMidnight;
+//    }
 }

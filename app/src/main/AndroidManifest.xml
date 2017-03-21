@@ -19,6 +19,7 @@
         <activity android:name=".DayTasksActivity" />
         <activity android:name=".AddTaskActivity" />
         <activity android:name=".TaskViewActivity"></activity>
+        <service android:name=".ResetTaskService"/>
     </application>
 
 </manifest>

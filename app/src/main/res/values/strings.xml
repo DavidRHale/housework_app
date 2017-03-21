@@ -12,4 +12,5 @@
     <string name="enter_description">Enter Task Description</string>
     <string name="submit_task_button">Add New Task</string>
     <string name="delete_button">Delete Task</string>
+    <string name="today_button">Today\'s Tasks</string>
 </resources>
