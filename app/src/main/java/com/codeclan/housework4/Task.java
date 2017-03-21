@@ -67,4 +67,12 @@ public class Task {
 
         return db.insert(TaskListContract.TasksEntry.TABLE_NAME, null, cv);
     }
+
+    public void changeCompletedStatus() {
+        if (isCompleted == true) {
+            this.isCompleted = false;
+        } else {
+            this.isCompleted = true;
+        }
+    }
 }

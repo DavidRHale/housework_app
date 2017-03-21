@@ -53,13 +53,7 @@ public class AddTaskActivity extends AppCompatActivity {
         String nameString = name.getText().toString();
         String descriptionString = description.getText().toString();
 
-        Task task = new Task(nameString, descriptionString);
-        task.addToDB(mDb);
-        Cursor taskCursor = getTaskFromDB(task);
-        taskCursor.moveToFirst();
-        int id = taskCursor.getInt(taskCursor.getPosition());
-
-        addDayTasksToDB(id);
+        addAllTasksToDB(nameString, descriptionString);
 
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
@@ -73,7 +67,7 @@ public class AddTaskActivity extends AppCompatActivity {
         return mDb.insert(TaskListContract.DayTasksEntry.TABLE_NAME, null, cv);
     }
 
-    private Cursor getTaskFromDB(Task task) {
+    private Cursor getTasksFromDB(Task task) {
         String selection = TaskListContract.TasksEntry.COLUMN_NAME + " = ?";
         String[] selectionArgs = { task.getName() };
         return mDb.query(
@@ -83,36 +77,71 @@ public class AddTaskActivity extends AppCompatActivity {
                 selectionArgs,
                 null,
                 null,
-                null
+                TaskListContract.TasksEntry._ID + " DESC"
         );
     }
 
-    private void addDayTasksToDB(int id) {
+    private void addAllTasksToDB(String name, String description) {
         if (monday.isChecked()) {
+            Task task = new Task(name, description);
+            task.addToDB(mDb);
+            Cursor taskCursor = getTasksFromDB(task);
+            taskCursor.moveToFirst();
+            int id = taskCursor.getInt(taskCursor.getPosition());
             addDayTaskToDB(1, id);
         }
 
         if (tuesday.isChecked()) {
+            Task task = new Task(name, description);
+            task.addToDB(mDb);
+            Cursor taskCursor = getTasksFromDB(task);
+            taskCursor.moveToFirst();
+            int id = taskCursor.getInt(taskCursor.getPosition());
             addDayTaskToDB(2, id);
         }
 
         if (wednesday.isChecked()) {
+            Task task = new Task(name, description);
+            task.addToDB(mDb);
+            Cursor taskCursor = getTasksFromDB(task);
+            taskCursor.moveToFirst();
+            int id = taskCursor.getInt(taskCursor.getPosition());
             addDayTaskToDB(3, id);
         }
 
         if (thursday.isChecked()) {
+            Task task = new Task(name, description);
+            task.addToDB(mDb);
+            Cursor taskCursor = getTasksFromDB(task);
+            taskCursor.moveToFirst();
+            int id = taskCursor.getInt(taskCursor.getPosition());
             addDayTaskToDB(4, id);
         }
 
         if (friday.isChecked()) {
+            Task task = new Task(name, description);
+            task.addToDB(mDb);
+            Cursor taskCursor = getTasksFromDB(task);
+            taskCursor.moveToFirst();
+            int id = taskCursor.getInt(taskCursor.getPosition());
             addDayTaskToDB(5, id);
         }
 
         if (saturday.isChecked()) {
+            Task task = new Task(name, description);
+            task.addToDB(mDb);
+            Cursor taskCursor = getTasksFromDB(task);
+            taskCursor.moveToFirst();
+            int id = taskCursor.getInt(taskCursor.getPosition());
             addDayTaskToDB(6, id);
         }
 
         if (sunday.isChecked()) {
+            Task task = new Task(name, description);
+            task.addToDB(mDb);
+            Cursor taskCursor = getTasksFromDB(task);
+            taskCursor.moveToFirst();
+            int id = taskCursor.getInt(taskCursor.getPosition());
             addDayTaskToDB(7, id);
         }
     }

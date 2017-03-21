@@ -20,23 +20,8 @@ public class DayTest {
 
     @Before
     public void setup() {
-        day = new Day(DayName.MONDAY);
-        ArrayList<DayName> days = new ArrayList<DayName>();
-        days.add(DayName.MONDAY);
-        task = new Task("Wash dishes", "Wash all the dishes", days);
-    }
-
-    @Test
-    public void testAddTask() {
-        day.addTask(task);
-        assertEquals(1, day.getTasks().size());
-    }
-
-    @Test
-    public void testDeleteTask() {
-        day.addTask(task);
-        day.deleteTask(task);
-        assertEquals(0, day.getTasks().size());
+        day = new Day("Monday");
+        task = new Task("Wash dishes", "Wash all the dishes");
     }
 
 }

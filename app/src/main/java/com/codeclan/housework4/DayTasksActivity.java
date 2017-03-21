@@ -1,5 +1,6 @@
 package com.codeclan.housework4;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -35,9 +36,6 @@ public class DayTasksActivity extends AppCompatActivity {
 
         TaskListDBHelper dbHelper = new TaskListDBHelper(this);
         mDb = dbHelper.getWritableDatabase();
-
-//        Cursor allDaysCursor = getAllDays();
-//        days = generateArrayListOfDays(getAllDays());
 
         Cursor taskListCursor = getTaskListForDay(dayID);
         tasks = generateArrayListOfTasks(taskListCursor);
@@ -108,6 +106,31 @@ public class DayTasksActivity extends AppCompatActivity {
         }
 
         return tasks;
+    }
+
+    public void onCompletedStatusClicked(View view) {
+        TextView textView = (TextView) view;
+        Task task = (Task) textView.getTag();
+
+        task.changeCompletedStatus();
+        long id = task.getId();
+        boolean isCompleted = task.isCompleted();
+
+        updateTaskOnDB(id, isCompleted);
+
+        String isCompletedString = "Not completed";
+        if (isCompleted == true) {
+            isCompletedString = "Completed!";
+        }
+
+        textView.setText(isCompletedString);
+    }
+
+    private void updateTaskOnDB(long id, boolean isCompleted) {
+        String strFilter = "_id=" + id;
+        ContentValues cv = new ContentValues();
+        cv.put(TaskListContract.TasksEntry.COLUMN_IS_COMLETED, isCompleted);
+        mDb.update(TaskListContract.TasksEntry.TABLE_NAME, cv, strFilter, null);
     }
 
 }
