@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -16,8 +17,10 @@ public class TaskViewActivity extends AppCompatActivity {
     private SQLiteDatabase mDb;
     private TextView nameView;
     private TextView descriptionView;
+    private TextView completedView;
     private TextView daysView;
     private Button deleteButton;
+    private Task task;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +29,7 @@ public class TaskViewActivity extends AppCompatActivity {
 
         nameView = (TextView) findViewById(R.id.item_name);
         descriptionView = (TextView) findViewById(R.id.item_description);
+        completedView = (TextView) findViewById(R.id.item_completed);
         daysView = (TextView) findViewById(R.id.item_days);
         deleteButton = (Button) findViewById(R.id.delete_task_button);
 
@@ -36,10 +40,16 @@ public class TaskViewActivity extends AppCompatActivity {
         Long id = intent.getLongExtra("taskId", 0);
 
         Cursor taskCursor = getTaskCursorFromDB(id);
-        Task task = generateTask(taskCursor);
+        task = generateTask(taskCursor);
+
+        String isCompletedString = "Not completed";
+        if (task.isCompleted() == true) {
+            isCompletedString = "Completed!";
+        }
 
         nameView.setText(task.getName());
         descriptionView.setText(task.getDescription());
+        completedView.setText(isCompletedString);
     }
 
     private Cursor getTaskCursorFromDB(long id) {
@@ -62,4 +72,16 @@ public class TaskViewActivity extends AppCompatActivity {
         long id = cursor.getLong(cursor.getColumnIndex(TaskListContract.TasksEntry._ID));
         return new Task(id, name, description, isCompleted);
     }
+
+    public void onDeleteButtonClicked(View button) {
+        long id = task.getId();
+        String table = TaskListContract.TasksEntry.TABLE_NAME;
+        String whereClause = "_id=?";
+        String[] whereArgs = new String[] { String.valueOf(id) };
+        mDb.delete(table, whereClause, whereArgs);
+
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
 }
