@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     private Button fridayButton;
     private Button saturdayButton;
     private Button sundayButton;
+    private Button addTaskButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,8 +29,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mondayButton = (Button) findViewById(R.id.monday_button);
-
-        Task task = new Task("Wash dishes", "Wash all the dishes");
+        tuesdayButton = (Button) findViewById(R.id.tuesday_button);
+        wednesdayButton = (Button) findViewById(R.id.wednesday_button);
+        thursdayButton = (Button) findViewById(R.id.thursday_button);
+        fridayButton = (Button) findViewById(R.id.friday_button);
+        saturdayButton = (Button) findViewById(R.id.saturday_button);
+        sundayButton = (Button) findViewById(R.id.sunday_button);
+        addTaskButton = (Button) findViewById(R.id.add_task_button);
 
         TaskListDBHelper dbHelper = new TaskListDBHelper(this);
         mDb = dbHelper.getWritableDatabase();
@@ -43,43 +49,43 @@ public class MainActivity extends AppCompatActivity {
 
     public void onMondayButtonClicked(View button) {
         Intent intent = new Intent(this, DayTasksActivity.class);
-        intent.putExtra("mondayID", 1);
+        intent.putExtra("dayID", 1);
         startActivity(intent);
     }
 
     public void onTuesdayButtonClicked(View button) {
         Intent intent = new Intent(this, DayTasksActivity.class);
-        intent.putExtra("mondayID", 2);
+        intent.putExtra("dayID", 2);
         startActivity(intent);
     }
 
     public void onWednesdayButtonClicked(View button) {
         Intent intent = new Intent(this, DayTasksActivity.class);
-        intent.putExtra("mondayID", 3);
+        intent.putExtra("dayID", 3);
         startActivity(intent);
     }
 
     public void onThursdayButtonClicked(View button) {
         Intent intent = new Intent(this, DayTasksActivity.class);
-        intent.putExtra("mondayID", 4);
+        intent.putExtra("dayID", 4);
         startActivity(intent);
     }
 
     public void onFridayButtonClicked(View button) {
         Intent intent = new Intent(this, DayTasksActivity.class);
-        intent.putExtra("mondayID", 5);
+        intent.putExtra("dayID", 5);
         startActivity(intent);
     }
 
     public void onSaturdayButtonClicked(View button) {
         Intent intent = new Intent(this, DayTasksActivity.class);
-        intent.putExtra("mondayID", 6);
+        intent.putExtra("dayID", 6);
         startActivity(intent);
     }
 
     public void onSundayButtonClicked(View button) {
         Intent intent = new Intent(this, DayTasksActivity.class);
-        intent.putExtra("mondayID", 7);
+        intent.putExtra("dayID", 7);
         startActivity(intent);
     }
 
@@ -129,4 +135,8 @@ public class MainActivity extends AppCompatActivity {
         return mDb.insert(TaskListContract.TasksEntry.TABLE_NAME, null, cv);
     }
 
+    public void onAddTaskButtonClicked(View button) {
+        Intent intent = new Intent(this, AddTaskActivity.class);
+        startActivity(intent);
+    }
 }

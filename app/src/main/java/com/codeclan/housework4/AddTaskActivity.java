@@ -1,12 +1,17 @@
 package com.codeclan.housework4;
 
+import android.content.ContentValues;
+import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 
+import com.codeclan.housework4.data.TaskListContract;
 import com.codeclan.housework4.data.TaskListDBHelper;
 
 public class AddTaskActivity extends AppCompatActivity {
@@ -44,11 +49,71 @@ public class AddTaskActivity extends AppCompatActivity {
         mDb = dbHelper.getWritableDatabase();
     }
 
-    public void onSubmitButtonClicked() {
+    public void onSubmitTaskButtonClicked(View button) {
         String nameString = name.getText().toString();
         String descriptionString = description.getText().toString();
 
         Task task = new Task(nameString, descriptionString);
         task.addToDB(mDb);
+        Cursor taskCursor = getTaskFromDB(task);
+        taskCursor.moveToFirst();
+        int id = taskCursor.getInt(taskCursor.getPosition());
+
+        addDayTasksToDB(id);
+
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    private long addDayTaskToDB(int dayId, int taskId) {
+        ContentValues cv = new ContentValues();
+        cv.put(TaskListContract.DayTasksEntry.COLUMN_DAY_ID, dayId);
+        cv.put(TaskListContract.DayTasksEntry.COLUMN_TASK_ID, taskId);
+
+        return mDb.insert(TaskListContract.DayTasksEntry.TABLE_NAME, null, cv);
+    }
+
+    private Cursor getTaskFromDB(Task task) {
+        String selection = TaskListContract.TasksEntry.COLUMN_NAME + " = ?";
+        String[] selectionArgs = { task.getName() };
+        return mDb.query(
+                TaskListContract.TasksEntry.TABLE_NAME,
+                null,
+                selection,
+                selectionArgs,
+                null,
+                null,
+                null
+        );
+    }
+
+    private void addDayTasksToDB(int id) {
+        if (monday.isChecked()) {
+            addDayTaskToDB(1, id);
+        }
+
+        if (tuesday.isChecked()) {
+            addDayTaskToDB(2, id);
+        }
+
+        if (wednesday.isChecked()) {
+            addDayTaskToDB(3, id);
+        }
+
+        if (thursday.isChecked()) {
+            addDayTaskToDB(4, id);
+        }
+
+        if (friday.isChecked()) {
+            addDayTaskToDB(5, id);
+        }
+
+        if (saturday.isChecked()) {
+            addDayTaskToDB(6, id);
+        }
+
+        if (sunday.isChecked()) {
+            addDayTaskToDB(7, id);
+        }
     }
 }
