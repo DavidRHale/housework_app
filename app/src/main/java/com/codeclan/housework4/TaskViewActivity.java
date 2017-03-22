@@ -15,11 +15,11 @@ import com.codeclan.housework4.data.TaskListDBHelper;
 public class TaskViewActivity extends AppCompatActivity {
 
     private SQLiteDatabase mDb;
-    private TextView nameView;
-    private TextView descriptionView;
-    private TextView completedView;
-    private TextView daysView;
-    private Button deleteButton;
+    private CustomTextView nameView;
+    private CustomTextView descriptionView;
+    private CustomTextView completedView;
+    private CustomTextView daysView;
+    private CustomButton deleteButton;
     private Task task;
 
     @Override
@@ -27,11 +27,11 @@ public class TaskViewActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_task_view);
 
-        nameView = (TextView) findViewById(R.id.item_name);
-        descriptionView = (TextView) findViewById(R.id.item_description);
-        completedView = (TextView) findViewById(R.id.item_completed);
-        daysView = (TextView) findViewById(R.id.item_days);
-        deleteButton = (Button) findViewById(R.id.delete_task_button);
+        nameView = (CustomTextView) findViewById(R.id.item_name);
+        descriptionView = (CustomTextView) findViewById(R.id.item_description);
+        completedView = (CustomTextView) findViewById(R.id.item_completed);
+        daysView = (CustomTextView) findViewById(R.id.item_days);
+        deleteButton = (CustomButton) findViewById(R.id.delete_task_button);
 
         TaskListDBHelper dbHelper = new TaskListDBHelper(this);
         mDb = dbHelper.getWritableDatabase();
@@ -76,8 +76,20 @@ public class TaskViewActivity extends AppCompatActivity {
     public void onDeleteButtonClicked(View button) {
         long id = task.getId();
         String table = TaskListContract.TasksEntry.TABLE_NAME;
-        String whereClause = "_id=?";
+        String whereClause = TaskListContract.TasksEntry._ID + "=?";
         String[] whereArgs = new String[] { String.valueOf(id) };
+        mDb.delete(table, whereClause, whereArgs);
+
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    public void onDeleteAllButtonClicked(View button) {
+        String name = task.getName();
+        String description = task.getDescription();
+        String table = TaskListContract.TasksEntry.TABLE_NAME;
+        String whereClause = TaskListContract.TasksEntry.COLUMN_NAME + "=? AND " + TaskListContract.TasksEntry.COLUMN_DESCRIPTION + "=?" ;
+        String[] whereArgs = new String[] { name, description };
         mDb.delete(table, whereClause, whereArgs);
 
         Intent intent = new Intent(this, MainActivity.class);

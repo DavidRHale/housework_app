@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -117,13 +118,8 @@ public class DayTasksActivity extends AppCompatActivity {
         boolean isCompleted = task.isCompleted();
 
         updateTaskOnDB(id, isCompleted);
-
-        String isCompletedString = "Not completed";
-        if (isCompleted == true) {
-            isCompletedString = "Completed!";
-        }
-
-        textView.setText(isCompletedString);
+        updateColour(task, textView);
+        updateText(task, textView);
     }
 
     public void onTaskItemClicked(View view) {
@@ -140,6 +136,22 @@ public class DayTasksActivity extends AppCompatActivity {
         ContentValues cv = new ContentValues();
         cv.put(TaskListContract.TasksEntry.COLUMN_IS_COMLETED, isCompleted);
         mDb.update(TaskListContract.TasksEntry.TABLE_NAME, cv, strFilter, null);
+    }
+
+    private void updateColour(Task task, TextView textView) {
+        if (task.isCompleted() == true) {
+            textView.setBackgroundColor(Color.parseColor("#9ccc65"));
+        } else {
+            textView.setBackgroundColor(Color.parseColor("#fd6161"));
+        }
+    }
+
+    private void updateText(Task task, TextView textView) {
+        if (task.isCompleted() == true) {
+            textView.setText("Complete");
+        } else {
+            textView.setText("Incomplete");
+        }
     }
 
 }

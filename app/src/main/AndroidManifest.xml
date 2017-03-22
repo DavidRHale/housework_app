@@ -16,9 +16,21 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".DayTasksActivity" />
-        <activity android:name=".AddTaskActivity" />
-        <activity android:name=".TaskViewActivity"></activity>
+        <activity android:name=".DayTasksActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.codeclan.housework4.MainActivity" />
+        </activity>
+        <activity android:name=".AddTaskActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.codeclan.housework4.MainActivity" />
+        </activity>
+        <activity android:name=".TaskViewActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.codeclan.housework4.DayTasksActivity" />
+        </activity>
         <service android:name=".ResetTaskService"/>
     </application>
 

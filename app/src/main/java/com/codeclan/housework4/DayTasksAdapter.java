@@ -1,6 +1,8 @@
 package com.codeclan.housework4;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,15 +29,18 @@ public class DayTasksAdapter extends ArrayAdapter<Task> {
 
         Task currentTask = getItem(position);
 
-        TextView name = (TextView) listItemView.findViewById(R.id.name);
+        CustomTextView name = (CustomTextView) listItemView.findViewById(R.id.name);
         name.setText(currentTask.getName());
         name.setTag(currentTask);
 
-        TextView completed = (TextView) listItemView.findViewById(R.id.completed);
+        CustomTextView completed = (CustomTextView) listItemView.findViewById(R.id.completed);
         completed.setTag(currentTask);
-        String isCompleted = "Not completed";
+        String isCompleted = "Incomplete";
+        completed.setBackgroundColor(Color.parseColor("#fd6161"));
+
         if (currentTask.isCompleted() == true) {
-            isCompleted = "Completed!";
+            isCompleted = "Complete";
+            completed.setBackgroundColor(Color.parseColor("#9ccc65"));
         }
         completed.setText(isCompleted);
 

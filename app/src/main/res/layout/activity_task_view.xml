@@ -4,38 +4,55 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="#bbdefb"
     tools:context="com.codeclan.housework4.TaskViewActivity">
 
-    <TextView
+    <com.codeclan.housework4.CustomTextView
         android:id="@+id/item_name"
         android:textSize="42sp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="0dp"
+        android:layout_weight="1" />
 
-    <TextView
+    <com.codeclan.housework4.CustomTextView
         android:id="@+id/item_description"
         android:textSize="34sp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="0dp"
+        android:layout_weight="1" />
 
-    <TextView
+    <com.codeclan.housework4.CustomTextView
         android:id="@+id/item_completed"
         android:textSize="34sp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="0dp"
+        android:layout_weight="1" />
 
-    <TextView
+    <com.codeclan.housework4.CustomTextView
         android:id="@+id/item_days"
         android:textSize="34sp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="0dp"
+        android:layout_weight="1" />
 
-    <Button
+    <com.codeclan.housework4.CustomButton
         android:id="@+id/delete_task_button"
         android:textSize="34sp"
         android:text="@string/delete_button"
         android:onClick="onDeleteButtonClicked"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:background="@color/primaryRed"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <com.codeclan.housework4.CustomButton
+        android:id="@+id/delete_all_task_button"
+        android:textSize="34sp"
+        android:text="@string/delete_all_button"
+        android:onClick="onDeleteAllButtonClicked"
+        android:background="@color/primaryRed"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
 
 </LinearLayout>

@@ -3,4 +3,9 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="complete">#a4d248</color>
+    <color name="incomplete">#ff3d53</color>
+    <color name="day_button">#bbdefb</color>
+    <color name="primaryRed">#fd6161</color>
+    <color name="primaryBlue">#82b1ff</color>
 </resources>
