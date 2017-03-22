@@ -7,7 +7,6 @@
         android:id="@+id/name"
         android:textSize="34sp"
         android:layout_gravity="left"
-        android:fontFamily=""
         android:onClick="onTaskItemClicked"
         android:layout_weight="7"
         android:layout_width="0dp"
