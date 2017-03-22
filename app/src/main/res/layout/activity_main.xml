@@ -6,96 +6,18 @@
     android:orientation="vertical"
     tools:context="com.codeclan.housework4.MainActivity">
 
-    <Button
-    android:id="@+id/monday_button"
-    android:text="@string/monday_button"
-    android:textSize="34sp"
-    android:layout_gravity="center"
-    android:layout_marginTop="20dp"
-    android:padding="10dp"
-    android:onClick="onMondayButtonClicked"
-    android:layout_width="400dp"
-    android:layout_height="0dp"
-    android:layout_weight="1" />
-
-    <Button
-        android:id="@+id/tuesday_button"
-        android:text="@string/tuesday_button"
-        android:textSize="34sp"
-        android:layout_gravity="center"
-        android:padding="10dp"
-        android:onClick="onTuesdayButtonClicked"
-        android:layout_width="400dp"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
-
-    <Button
-        android:id="@+id/wednesday_button"
-        android:text="@string/wednesday_button"
-        android:textSize="34sp"
-        android:onClick="onWednesdayButtonClicked"
-        android:layout_gravity="center"
-        android:padding="10dp"
-        android:layout_width="400dp"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
-
-    <Button
-        android:id="@+id/thursday_button"
-        android:text="@string/thursday_button"
-        android:textSize="34sp"
-        android:layout_gravity="center"
-        android:onClick="onThursdayButtonClicked"
-        android:padding="10dp"
-        android:layout_width="400dp"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
-
-    <Button
-        android:id="@+id/friday_button"
-        android:text="@string/friday_button"
-        android:textSize="34sp"
-        android:layout_gravity="center"
-        android:onClick="onFridayButtonClicked"
-        android:padding="10dp"
-        android:layout_width="400dp"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
-
-    <Button
-        android:id="@+id/saturday_button"
-        android:text="@string/saturday_button"
-        android:textSize="34sp"
-        android:layout_gravity="center"
-        android:onClick="onSaturdayButtonClicked"
-        android:padding="10dp"
-        android:layout_width="400dp"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
-
-    <Button
-        android:id="@+id/sunday_button"
-        android:text="@string/sunday_button"
-        android:textSize="34sp"
-        android:layout_gravity="center"
-        android:onClick="onSundayButtonClicked"
-        android:padding="10dp"
-        android:layout_width="400dp"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
-
-    <Button
+    <com.codeclan.housework4.CustomButton
         android:id="@+id/today_button"
         android:text="@string/today_button"
         android:textSize="34sp"
         android:layout_gravity="center"
         android:onClick="onTodayButtonClicked"
         android:padding="10dp"
-        android:layout_width="400dp"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1" />
+        android:layout_weight="2" />
 
-    <Button
+    <com.codeclan.housework4.CustomButton
         android:id="@+id/add_task_button"
         android:text="@string/add_task_button"
         android:textSize="34sp"
@@ -104,6 +26,76 @@
         android:padding="10dp"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"/>
+        android:layout_weight="2"/>
+
+    <com.codeclan.housework4.CustomButton
+    android:id="@+id/monday_button"
+    android:text="@string/monday_button"
+    android:textSize="34sp"
+    android:layout_gravity="center"
+    android:onClick="onMondayButtonClicked"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="1" />
+
+    <com.codeclan.housework4.CustomButton
+        android:id="@+id/tuesday_button"
+        android:text="@string/tuesday_button"
+        android:textSize="34sp"
+        android:layout_gravity="center"
+        android:onClick="onTuesdayButtonClicked"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <com.codeclan.housework4.CustomButton
+        android:id="@+id/wednesday_button"
+        android:text="@string/wednesday_button"
+        android:textSize="34sp"
+        android:onClick="onWednesdayButtonClicked"
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <com.codeclan.housework4.CustomButton
+        android:id="@+id/thursday_button"
+        android:text="@string/thursday_button"
+        android:textSize="34sp"
+        android:layout_gravity="center"
+        android:onClick="onThursdayButtonClicked"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <com.codeclan.housework4.CustomButton
+        android:id="@+id/friday_button"
+        android:text="@string/friday_button"
+        android:textSize="34sp"
+        android:layout_gravity="center"
+        android:onClick="onFridayButtonClicked"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <com.codeclan.housework4.CustomButton
+        android:id="@+id/saturday_button"
+        android:text="@string/saturday_button"
+        android:textSize="34sp"
+        android:layout_gravity="center"
+        android:onClick="onSaturdayButtonClicked"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <com.codeclan.housework4.CustomButton
+        android:id="@+id/sunday_button"
+        android:text="@string/sunday_button"
+        android:textSize="34sp"
+        android:layout_gravity="center"
+        android:onClick="onSundayButtonClicked"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
 
 </LinearLayout>

@@ -7,15 +7,18 @@
         android:id="@+id/name"
         android:textSize="34sp"
         android:layout_gravity="left"
+        android:fontFamily=""
         android:onClick="onTaskItemClicked"
-        android:layout_width="wrap_content"
+        android:layout_weight="7"
+        android:layout_width="0dp"
         android:layout_height="100dp" />
 
     <TextView
         android:id="@+id/completed"
         android:textSize="34sp"
         android:onClick="onCompletedStatusClicked"
-        android:layout_width="wrap_content"
+        android:layout_weight="3"
+        android:layout_width="0dp"
         android:layout_height="100dp" />
 
 </LinearLayout>

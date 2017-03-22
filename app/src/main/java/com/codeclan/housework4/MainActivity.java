@@ -1,18 +1,14 @@
 package com.codeclan.housework4;
 
-import android.app.AlarmManager;
-import android.app.PendingIntent;
 import android.content.ContentValues;
-import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import java.util.Calendar;
 
-import android.os.SystemClock;
+import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import com.codeclan.housework4.data.*;
@@ -21,30 +17,30 @@ public class MainActivity extends AppCompatActivity {
 
     private SQLiteDatabase mDb;
 
-    private Button mondayButton;
-    private Button tuesdayButton;
-    private Button wednesdayButton;
-    private Button thursdayButton;
-    private Button fridayButton;
-    private Button saturdayButton;
-    private Button sundayButton;
-    private Button todayButton;
-    private Button addTaskButton;
+    private CustomButton mondayButton;
+    private CustomButton tuesdayButton;
+    private CustomButton wednesdayButton;
+    private CustomButton thursdayButton;
+    private CustomButton fridayButton;
+    private CustomButton saturdayButton;
+    private CustomButton sundayButton;
+    private CustomButton todayButton;
+    private CustomButton addTaskButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mondayButton = (Button) findViewById(R.id.monday_button);
-        tuesdayButton = (Button) findViewById(R.id.tuesday_button);
-        wednesdayButton = (Button) findViewById(R.id.wednesday_button);
-        thursdayButton = (Button) findViewById(R.id.thursday_button);
-        fridayButton = (Button) findViewById(R.id.friday_button);
-        saturdayButton = (Button) findViewById(R.id.saturday_button);
-        sundayButton = (Button) findViewById(R.id.sunday_button);
-        todayButton = (Button) findViewById(R.id.today_button);
-        addTaskButton = (Button) findViewById(R.id.add_task_button);
+        mondayButton = (CustomButton) findViewById(R.id.monday_button);
+        tuesdayButton = (CustomButton) findViewById(R.id.tuesday_button);
+        wednesdayButton = (CustomButton) findViewById(R.id.wednesday_button);
+        thursdayButton = (CustomButton) findViewById(R.id.thursday_button);
+        fridayButton = (CustomButton) findViewById(R.id.friday_button);
+        saturdayButton = (CustomButton) findViewById(R.id.saturday_button);
+        sundayButton = (CustomButton) findViewById(R.id.sunday_button);
+        todayButton = (CustomButton) findViewById(R.id.today_button);
+        addTaskButton = (CustomButton) findViewById(R.id.add_task_button);
 
         TaskListDBHelper dbHelper = new TaskListDBHelper(this);
         mDb = dbHelper.getWritableDatabase();
@@ -173,28 +169,4 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-//    public void setAlarm() {
-//        String alarm = Context.ALARM_SERVICE;
-//        AlarmManager alarmManager = (AlarmManager) getSystemService(alarm);
-//
-//        Intent intent = new Intent( "RESET_TASKS" );
-//        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, intent, 0);
-//
-//        int type = AlarmManager.ELAPSED_REALTIME_WAKEUP;
-//        long interval = AlarmManager.INTERVAL_DAY;
-//        long triggerTime = System.currentTimeMillis() + millisecondsToMidnight() + 500000;
-//
-//        alarmManager.setRepeating(type, triggerTime, interval, pendingIntent);
-//    }
-//
-//    public long millisecondsToMidnight() {
-//        Calendar calendar = Calendar.getInstance();
-//        calendar.add(Calendar.DAY_OF_MONTH, 1);
-//        calendar.set(Calendar.HOUR_OF_DAY, 0);
-//        calendar.set(Calendar.MINUTE, 0);
-//        calendar.set(Calendar.SECOND, 0);
-//        calendar.set(Calendar.MILLISECOND, 0);
-//        long millisecondsToMidnight = (calendar.getTimeInMillis()-System.currentTimeMillis());
-//        return millisecondsToMidnight;
-//    }
 }
