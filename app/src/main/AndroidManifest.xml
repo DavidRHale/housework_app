@@ -21,7 +21,8 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.codeclan.housework4.MainActivity" />
         </activity>
-        <activity android:name=".AddTaskActivity">
+        <activity android:name=".AddTaskActivity"
+                android:windowSoftInputMode="stateVisible|adjustResize">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.codeclan.housework4.MainActivity" />
