@@ -52,38 +52,44 @@ public class MainActivity extends AppCompatActivity {
         ResetTaskService.setServiceAlarm(this);
     }
 
-    public void onMondayButtonClicked(View button) {
-        onButtonClicked(button, 1);
-    }
-
-    public void onTuesdayButtonClicked(View button) {
-        onButtonClicked(button, 2);
-    }
-
-    public void onWednesdayButtonClicked(View button) {
-        onButtonClicked(button, 3);
-    }
-
-    public void onThursdayButtonClicked(View button) {
-        onButtonClicked(button, 4);
-    }
-
-    public void onFridayButtonClicked(View button) {
-        onButtonClicked(button, 5);
-    }
-
-    public void onSaturdayButtonClicked(View button) {
-        onButtonClicked(button, 6);
-    }
-
-    public void onSundayButtonClicked(View button) {
-        onButtonClicked(button, 7);
-    }
-
     public void onButtonClicked(View button, int dayId) {
         Intent intent = new Intent(this, DayTasksActivity.class);
         intent.putExtra("dayID", dayId);
         startActivity(intent);
+    }
+
+    public void onButtonClicked(View button) {
+        int dayId = 0;
+
+        switch (button.getId()) {
+            case R.id.monday_button:
+                dayId = 1;
+                break;
+            case R.id.tuesday_button:
+                dayId = 2;
+                break;
+            case R.id.wednesday_button:
+                dayId = 3;
+                break;
+            case R.id.thursday_button:
+                dayId = 4;
+                break;
+            case R.id.friday_button:
+                dayId = 5;
+                break;
+            case R.id.saturday_button:
+                dayId = 6;
+                break;
+            case R.id.sunday_button:
+                dayId = 7;
+                break;
+        }
+
+        if (dayId != 0) {
+            Intent intent = new Intent(this, DayTasksActivity.class);
+            intent.putExtra("dayID", dayId);
+            startActivity(intent);
+        }
     }
 
     private long addDayToDB(String dayName) {

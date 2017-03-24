@@ -30,57 +30,88 @@
         android:maxLines="4"
         android:maxLength="2000"/>
 
-    <CheckBox
-        android:id="@+id/monday_checkbox"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:text="@string/monday_button"
-        android:textAppearance="?android:textAppearanceMedium" />
+        android:orientation="horizontal">
 
-    <CheckBox
-        android:id="@+id/tuesday_checkbox"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:text="@string/tuesday_button"
-        android:textAppearance="?android:textAppearanceMedium" />
+        <CheckBox
+            android:id="@+id/monday_checkbox"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textSize="34sp"
+            android:text="@string/monday_button"
+            android:textAppearance="?android:textAppearanceMedium" />
 
-    <CheckBox
-        android:id="@+id/wednesday_checkbox"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:text="@string/wednesday_button"
-        android:textAppearance="?android:textAppearanceMedium" />
+        <CheckBox
+            android:id="@+id/tuesday_checkbox"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textSize="34sp"
+            android:text="@string/tuesday_button"
+            android:textAppearance="?android:textAppearanceMedium" />
 
-    <CheckBox
-        android:id="@+id/thursday_checkbox"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:text="@string/thursday_button"
-        android:textAppearance="?android:textAppearanceMedium" />
+    </LinearLayout>
 
-    <CheckBox
-        android:id="@+id/friday_checkbox"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:text="@string/friday_button"
-        android:textAppearance="?android:textAppearanceMedium" />
+        android:orientation="horizontal">
 
-    <CheckBox
-        android:id="@+id/saturday_checkbox"
+        <CheckBox
+            android:id="@+id/wednesday_checkbox"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textSize="34sp"
+            android:text="@string/wednesday_button"
+            android:textAppearance="?android:textAppearanceMedium" />
+
+        <CheckBox
+            android:id="@+id/thursday_checkbox"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textSize="34sp"
+            android:text="@string/thursday_button"
+            android:textAppearance="?android:textAppearanceMedium" />
+
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:text="@string/saturday_button"
-        android:textAppearance="?android:textAppearanceMedium" />
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:id="@+id/friday_checkbox"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textSize="34sp"
+            android:text="@string/friday_button"
+            android:textAppearance="?android:textAppearanceMedium" />
+
+        <CheckBox
+            android:id="@+id/saturday_checkbox"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textSize="34sp"
+            android:text="@string/saturday_button"
+            android:textAppearance="?android:textAppearanceMedium" />
+
+    </LinearLayout>
 
     <CheckBox
         android:id="@+id/sunday_checkbox"
         android:layout_width="match_parent"
+        android:textSize="34sp"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:text="@string/sunday_button"
@@ -96,6 +127,5 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="2" />
-
 
 </LinearLayout>

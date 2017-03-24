@@ -10,6 +10,10 @@
     <com.codeclan.housework4.CustomTextView
         android:id="@+id/item_name"
         android:textSize="42sp"
+        android:textColor="#000"
+        android:paddingLeft="10dp"
+        android:gravity="center_vertical"
+        android:textAlignment="viewStart"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1" />
@@ -17,6 +21,10 @@
     <com.codeclan.housework4.CustomTextView
         android:id="@+id/item_description"
         android:textSize="34sp"
+        android:textColor="#000"
+        android:paddingLeft="10dp"
+        android:gravity="center_vertical"
+        android:textAlignment="viewStart"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1" />
@@ -24,6 +32,10 @@
     <com.codeclan.housework4.CustomTextView
         android:id="@+id/item_completed"
         android:textSize="34sp"
+        android:textColor="#000"
+        android:paddingLeft="10dp"
+        android:gravity="center_vertical"
+        android:textAlignment="viewStart"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1" />
@@ -31,6 +43,10 @@
     <com.codeclan.housework4.CustomTextView
         android:id="@+id/item_days"
         android:textSize="34sp"
+        android:textColor="#000"
+        android:paddingLeft="10dp"
+        android:gravity="center_vertical"
+        android:textAlignment="viewStart"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1" />
